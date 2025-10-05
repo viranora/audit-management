@@ -1,0 +1,43 @@
+# Gradle
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDEs & Editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.factorypath
+.springBeans
+.sts4-cache
+.apt_generated
+out/
+bin/
+.vscode/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/nb-gradle/
+
+# macOS & Windows
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Dependency directories
+/node_modules
+
+# Environment files (secret/config)
+*.env
+.env.*
+application.properties
+application-*.properties

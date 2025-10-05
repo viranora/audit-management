@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    image: semanurozyilmaz/smartspirit-backend:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    image: semanurozyilmaz/smartspirit-frontend:latest
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: smartspirit
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
