@@ -1,82 +1,88 @@
-# SmartSpirit Projesi - Docker Hub Üzerinden Çalıştırma Rehberi
+# SmartSpirit Project - Docker Hub Deployment Guide
 
-Bu projeyi **bilgisayarınızda derlemeden**, doğrudan Docker Hub'daki hazır imajları kullanarak hızlıca çalıştırabilirsiniz.
+You can run this project **without building it on your computer** by using the ready-made images directly from Docker Hub.
 
-Aşağıdaki adımları takip edin:
-
----
-
-## Gereksinimler
-
-- [Docker](https://www.docker.com/products/docker-desktop) yüklü olmalı
+Follow the steps below:
 
 ---
 
-## 1. Hızlı Başlangıç: Docker Pull ve Run
+## Requirements
 
-### Backend (Spring Boot) Servisini Çalıştırmak
+- [Docker](https://www.docker.com/products/docker-desktop) must be installed
+
+---
+
+## 1. Quick Start: Docker Pull and Run
+
+### Running the Backend (Spring Boot) Service
 
 ```sh
 docker pull semaozylmz/smartspirit-backend:latest
 docker run -d -p 8080:8080 --name smartspirit-backend semaozylmz/smartspirit-backend:latest
 ```
-> Artık backend servisine [http://localhost:8080](http://localhost:8080) adresinden ulaşabilirsiniz.
+The backend service is now accessible at http://localhost:8080.
 
 ---
 
-### Frontend (React) Servisini Çalıştırmak
+### Running the Frontend (React) Service
 
 ```sh
 docker pull semaozylmz/smartspirit-frontend:latest
 docker run -d -p 3000:80 --name smartspirit-frontend semaozylmz/smartspirit-frontend:latest
 ```
-> Artık frontend arayüzüne [http://localhost:3000](http://localhost:3000) adresinden ulaşabilirsiniz.
+The frontend interface is now accessible at http://localhost:3000.
 
 ---
 
-## 2. Tüm Servisleri Birlikte docker-compose ile Çalıştırmak
+## 2. Running All Services Together with docker-compose
 
-Çalıştırmak için terminalde:
+In your terminal, run:
 ```sh
-docker-compose pull        # Tüm imajları Docker Hub'dan çeker
-docker-compose up -d       # Tüm servisleri başlatır
+docker-compose pull        # Pulls all images from Docker Hub
+docker-compose up -d       # Starts all services
 ```
 
 ---
 
-## 3. Servislere Erişim
+## 3. Accessing the Services
 
-- **Backend:** [http://localhost:8080](http://localhost:8080)
-- **Frontend:** [http://localhost:3000](http://localhost:3000)
+- Backend: http://localhost:8080
+
+- Frontend: http://localhost:3000
 
 ---
 
-## 4. Servisleri Durdurmak
+## 4. Stopping the Services
 
-Tek tek durdurmak için:
+To stop them individually:
 ```sh
 docker stop smartspirit-backend smartspirit-frontend smartspirit-db
 ```
-veya docker-compose kullandıysanız:
+or if you used docker-compose:
 ```sh
 docker-compose down
 ```
 
 ---
 
-## Otomatik Oluşturulan Yönetici (Admin) Kullanıcısı
+## Auto-Generated Admin User
 
-Sistemde otomatik olarak aşağıdaki bilgilerle bir yönetici (admin) kullanıcısı oluşturulur:
+An admin user is automatically created in the system with the following credentials:
 
-- **Kullanıcı adı:** `admin`
-- **Şifre:** `12345678`
-- **Rol:** `Admin`
+Username: admin
 
-İlk girişte bu bilgileri kullanarak oturum açabilirsiniz.
+Password: 12345678
+
+Role: Admin
+
+You can log in using this information for the first time.
 
 ---
 
-## Notlar
+## Notes
 
-- Kodunuzu klonlamanıza veya derlemenize gerek yoktur, tüm imajlar Docker Hub'dan çekilecektir.
-- Sunucu veya local makine fark etmeksizin aynı adımları uygulayabilirsiniz.
+- You do not need to clone or build the code; all images will be pulled from Docker Hub.
+
+- You can follow the same steps regardless of whether you are on a server or a local machine.
+
+... by Nora
